@@ -26,3 +26,14 @@ feature 'Add bookmark' do
     expect(page).to have_content('Github')
   end
 end
+
+feature 'delete bookmark' do
+  scenario 'can delete a bookmark by pressing a button' do
+    visit('/')
+    fill_in 'url', with: 'http://www.github.com'
+    fill_in 'title', with: 'Github'
+    click_button 'Submit'
+    click_button 'Delete'
+    expect(page).not_to have_content('Github')
+  end
+end

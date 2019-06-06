@@ -12,11 +12,21 @@ end
 
 describe '#add' do
   it 'can add a new bookmark' do
-    bookmark = Bookmark.new('http://www.github.com','Github')
-    bookmark.add
+    # bookmark = Bookmark.new('http://www.github.com','Github')
+    Bookmark.add('http://www.github.com', 'Github')
     bookmarks = Bookmark.all
     expect(bookmarks[0].url).to eq('http://www.github.com')
     expect(bookmarks[0].title).to eq('Github')
+  end
+end
+describe '#delete' do
+  it 'can delete an existing bookmark' do
+    bookmark = Bookmark.new('http://www.github.com','Github')
+    bookmark.add
+    bookmark.delete(1)
+    bookmarks = Bookmark.all
+    expect(bookmarks[0].url).not_to eq('http://www.github.com')
+    expect(bookmarks[0].title).not_to eq('Github')
   end
 end
 
