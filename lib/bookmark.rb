@@ -17,7 +17,7 @@ class Bookmark
 
   def add
     conn = setting_database
-    conn.exec("INSERT INTO bookmarks (url) VALUES ('#{@url}','#{@title}');")
+    conn.exec("INSERT INTO bookmarks (url , title) VALUES ('#{@url}','#{@title}');")
   end
 
 end
